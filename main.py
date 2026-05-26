@@ -1,6 +1,6 @@
-from packing_project.algorithms.first_fit import first_fit
-from packing_project.algorithms.best_fit import best_fit
-from packing_project.algorithms.worst_fit import worst_fit
+from algorithms.first_fit import first_fit
+from algorithms.best_fit import best_fit
+from algorithms.worst_fit import worst_fit
 
 def comparer_algorithmes(items, capacite):
     algos = {

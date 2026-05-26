@@ -1,4 +1,11 @@
-from packing_project.models.bin import Bin
+import sys
+import os
+
+# Ajouter le dossier racine du projet au chemin de recherche de Python
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from models.bin import Bin
+
 
 
 def first_fit_permutation(items, capacite):
