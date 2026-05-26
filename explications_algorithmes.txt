@@ -1,0 +1,25 @@
+# Explication Simple des Algorithmes de Packing (Rangement)
+
+Voici une explication simple des trois méthodes utilisées pour ranger des objets dans des bacs (bins) :
+
+1. First-Fit (Le premier qui peut) :
+   On prend un objet et on parcourt les bacs déjà ouverts un par un. On met l'objet dans le TOUT PREMIER bac qui a assez de place pour l'accueillir. Si aucun bac n'a assez de place, on en ouvre un nouveau.
+   -> C'est la méthode la plus rapide et la plus simple.
+
+2. Best-Fit (Le meilleur ajustement) :
+   On cherche parmi tous les bacs déjà ouverts celui qui laissera le MOINS d'espace vide après avoir mis l'objet. On veut que l'objet soit "serré" au maximum dans son bac pour gaspiller le moins de place possible par bac.
+   -> Le but est de remplir les bacs de façon optimale.
+
+3. Worst-Fit (Le pire ajustement) :
+   C'est l'inverse du Best-Fit. On met l'objet dans le bac qui a le PLUS d'espace libre. On essaie de répartir les objets pour que chaque bac garde le plus de place possible pour de futurs gros objets.
+   -> On cherche à laisser de grandes places vides plutôt que plein de petites places.
+
+4. Brute Force (La force brute) :
+   C'est la méthode "bourrine". L'ordinateur teste TOUTES les combinaisons d'ordre possibles pour les objets (toutes les permutations). Pour chaque ordre, il range les objets et regarde combien de bacs sont utilisés. À la fin, il garde la solution qui utilise le moins de bacs possible.
+   -> C'est la seule méthode qui garantit de trouver la solution parfaite, mais elle devient TRÈS lente dès qu'il y a beaucoup d'objets (car il y a trop de combinaisons à tester).
+
+Résumé :
+- First-Fit : Premier arrivé, premier servi.
+- Best-Fit : On cherche le bac le plus "juste".
+- Worst-Fit : On cherche le bac le plus "vide".
+- Brute Force : On teste tout pour trouver le parfait.
