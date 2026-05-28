@@ -1,0 +1,48 @@
+=== CONTRE-EXEMPLES POUR LES ALGORITHMES DE PACKING ===
+
+--- 1D PACKING (Capacité du bac = 1.0) ---
+
+1. First-Fit (FF)
+   - Données d'entrée : [0.2, 0.5, 0.4, 0.7, 0.1, 0.3, 0.8]
+   - Résultat FF : 4 bacs
+   - Solution Optimale : 3 bacs (Ex: [0.2, 0.8], [0.5, 0.4, 0.1], [0.7, 0.3])
+
+2. Best-Fit (BF)
+   - Données d'entrée : [0.4, 0.4, 0.6, 0.6]
+   - Résultat BF : 3 bacs
+   - Solution Optimale : 2 bacs (Ex: [0.4, 0.6], [0.4, 0.6])
+
+3. Worst-Fit (WF)
+   - Données d'entrée : [0.4, 0.4, 0.4, 0.4, 0.6, 0.6]
+   - Résultat WF : 4 bacs
+   - Solution Optimale : 3 bacs (Ex: [0.4, 0.6], [0.4, 0.6], [0.4, 0.4])
+
+
+--- 2D PACKING (Dimensions du bac = 10x10) ---
+
+1. Next-Fit Decreasing Height (NFDH)
+   - Données d'entrée (Largeur x Hauteur) : [(6,5), (6,5), (4,5), (4,5)]
+   - Résultat NFDH : 3 rectangles placés
+   - Solution Optimale : 4 rectangles placés (S1: (6,5) et (4,5), S2: (6,5) et (4,5))
+
+2. First-Fit Decreasing Height (FFDH)
+   - Données d'entrée : [(1,10), (9,1), (9,1), (9,1), (9,1), (9,1), (9,1), (9,1), (9,1), (9,1), (9,1)]
+   - Résultat FFDH : 2 rectangles placés (Le 1x10 et le premier 9x1 prennent toute la largeur)
+   - Solution Optimale : 11 rectangles placés (Le 1x10 à gauche, et les dix 9x1 empilés à droite)
+
+3. Best-Fit 2D
+   - Données d'entrée : [(6,7), (4,10)]
+   - Résultat BF2D : 1 rectangle placé (Le 6x7 est placé, divisant l'espace en (4,7) et (10,3), aucun ne peut contenir le 4x10)
+   - Solution Optimale : 2 rectangles placés (Le 4x10 à gauche, le 6x7 à droite)
+
+--- PACKING AVEC ROTATION ET FORMES MIXTES (Bac 10x10) ---
+
+1. Cas où la rotation est nécessaire (Triangle + Rectangles)
+   - Données : 1 Triangle (Base 5, H 10), 2 Rectangles (10x2)
+   - Résultat SANS rotation (NFDH) : 1 seule forme placée (le Triangle). Les rectangles de largeur 10 ne rentrent plus car le triangle occupe déjà 5 en largeur sur toute la hauteur.
+   - Résultat AVEC rotation (BF Rotation) : 3 formes placées. Les rectangles sont pivotés en 2x10, permettant de placer Triangle(5x10) + Rect1(2x10) + Rect2(2x10) côte à côte (largeur totale 9 <= 10).
+
+Note sur les Triangles :
+L'implémentation actuelle utilise le rectangle englobant (bounding box) pour les triangles. 
+Un contre-exemple "structurel" est le suivant : 
+Deux triangles isocèles identiques (ex: Base 10, H 10) peuvent théoriquement s'imbriquer pour former un rectangle 10x10. Cependant, avec l'approche par boîte englobante, un seul triangle de 10x10 sera placé dans un bac de 10x10, ce qui est sous-optimal par rapport à une imbrication réelle.
