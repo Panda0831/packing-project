@@ -1,11 +1,10 @@
-import sys
 import os
+import sys
 
 # Ajouter le dossier racine du projet au chemin de recherche de Python
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from models.bin import Bin
-
 
 
 def first_fit_permutation(items, capacite):
@@ -25,10 +24,6 @@ def first_fit_permutation(items, capacite):
 
 
 def generer_permutations(liste):
-    """
-    Génère TOUTES les permutations d'une liste FROM SCRATCH.
-    Algorithme récursif : on place chaque élément à chaque position possible.
-    """
     if len(liste) <= 1:
         yield liste
         return
@@ -45,9 +40,6 @@ def generer_permutations(liste):
 
 
 def brute_force_1d(items, capacite):
-    """
-    Teste TOUTES les permutations possibles (sans librairie externe).
-    """
     if not items:
         return {"nb_bacs": 0, "permutation": [], "solution": []}
 
