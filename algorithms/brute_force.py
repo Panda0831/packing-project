@@ -35,8 +35,8 @@ def generer_permutations(liste):
         reste = liste[:i] + liste[i + 1 :]
 
         # On génère les permutations du reste
-        for perm in generer_permutations(reste):
-            yield [premier] + perm
+        for permutation in generer_permutations(reste):
+            yield [premier] + permutation
 
 
 def brute_force_1d(items, capacite):
@@ -48,13 +48,13 @@ def brute_force_1d(items, capacite):
     meilleure_solution = None
 
     # Génère et teste chaque permutation manuellement
-    for perm in generer_permutations(items):
-        solution = first_fit_permutation(perm, capacite)
+    for permutation in generer_permutations(items):
+        solution = first_fit_permutation(permutation, capacite)
         nb_bacs = len(solution)
 
         if nb_bacs < meilleur_nb_bacs:
             meilleur_nb_bacs = nb_bacs
-            meilleure_permutation = perm
+            meilleure_permutation = permutation
             meilleure_solution = solution
 
     return {

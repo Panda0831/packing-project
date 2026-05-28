@@ -1,19 +1,19 @@
-import sys
 import os
+import sys
 
 # Ajouter le dossier racine du projet au chemin de recherche de Python
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from models.bin import Bin
 
 
-
 def best_fit(items, capacite):
     bins = []
+    # mitady izay bin tsara ndrindra
     for item in items:
         meilleur_bin = None
         espace_minimum = capacite + 1
-
+        # choix du meilleur bin pour l'item actuel
         for bin in bins:
             if bin.peut_contenir(item):
                 espace_restant = bin.capacite - (bin.charge_actuelle + item)
@@ -22,8 +22,10 @@ def best_fit(items, capacite):
                     meilleur_bin = bin
 
         if meilleur_bin:
+            # On y place l'objet.
             meilleur_bin.ajouter_item(item)
         else:
+            # On crée un tout nouveau bac , on y met l'objet, et on l'ajoute liste de bacs.
             new_bin = Bin(capacite)
             new_bin.ajouter_item(item)
             bins.append(new_bin)
