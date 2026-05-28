@@ -9,8 +9,6 @@ from models.two_d.rectangle import Rectangle
 
 
 def tester_ffdh():
-    print("=== Démarrage du test FFDH ===")
-
     # Rectangles de test
     rects = [
         Rectangle(id="R1", largeur=4, hauteur=2),
@@ -32,8 +30,6 @@ def tester_ffdh():
     print(f"\nRésultat : {resultat}")
     for r in resultat.rectangles_places:
         print(f"  {r}")
-
-    print("=== Fin du test ===")
 
 
 if __name__ == "__main__":

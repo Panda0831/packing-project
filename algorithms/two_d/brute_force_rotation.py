@@ -9,13 +9,15 @@ from models.two_d.bin_2d import Bin2D
 
 def generer_permutations(liste):
     if len(liste) <= 1:
-        yield liste
-        return
+        return [liste]
+    
+    perms = []
     for i in range(len(liste)):
         premier = liste[i]
         reste = liste[:i] + liste[i + 1 :]
         for perm in generer_permutations(reste):
-            yield [premier] + perm
+            perms.append([premier] + perm)
+    return perms
 
 
 def brute_force_rotation_2d(rectangles, bin_largeur, bin_hauteur):
